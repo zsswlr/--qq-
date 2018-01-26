@@ -1,0 +1,26 @@
+/**app.wxss**/
+.container{
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: '微软雅黑';
+}
+/*.page-body{
+ 
+ display: flex;
+ fle
+}*/
+.page{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-body{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 1300rpx;
+}

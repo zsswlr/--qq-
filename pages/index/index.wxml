@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class="container">
+  <scroll-view scroll-y="true" class="page-body" bindscrolltolower="laodMore">
+
+    <!--轮播-->
+      <view class="swiper">
+          <swiper interval="{{interval}}" duration="{{duration}}" vertical="{{vertical}}"
+          indicator-dots="indicatordots" autoplay="{{autoplay}}">
+              <block wx:for-items="{{banner_url}}" wx:key="this">
+
+                <swiper-item>
+                    <block wx:if="{{item}}">
+                      <image src="{{item}}"></image>
+                    </block>
+
+                     <block wx:else>
+                      <image src="../../images/default_pic.png"></image>
+                    </block>
+                </swiper-item>
+              
+              </block>
+            
+          </swiper>
+      </view>
+    
+<!--导航active_red-->
+  <view class="nav_top">
+  
+  <block wx:for="{{navTopItems}}" wx:key="this" > 
+      <view class="nav_top_item {{curNavId==item.id ? 'active_'+colors[index]:''}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchTap">
+      <image src="{{item.icon}}"></image>
+      <text>{{item.title}}</text>
+      </view>
+  </block>
+  </view>
+
+  <!--list-->
+  <view class="nav_section">
+  
+  <view wx:if="{{list[curIndex]}}">
+      <block wx:for="{{list[curIndex]}}" wx:key="this">
+
+          <view class="nav_section_item">
+          <!--images-->
+          <view class="section_images">
+
+            <block wx:if="{{item.picUrl}}">
+             <image src="{{item.picUrl}}" bindtap="navigateDetail"></image>
+            </block>
+            
+          <block wx:else>
+            <image src="../../images/default_pic.png"></image>
+          </block>
+          </view>
+          
+          <!--说明-->
+          <view class="section_con">
+              <view class="section_con_Sub">
+                <text>{{item.listenCount}}</text>
+              </view>
+              <view class="section_con_price">
+                <text>{{item.topTitle}}</text>
+              </view>
+              <view class="text_index">{{item.id}}</view>
+                
+     
+          
+          </view>
+
+          <!--预约-->
+          <view class="section_book" bindtap="bookTap" >
+             <text>播放</text>
+          
+          </view>
+
+          </view>
+      
+      </block>
+  </view>
+  <view wx:else>
+    <text>暂无数据</text>
+  </view>
+  
+  </view>
+  </scroll-view>
+</view>
